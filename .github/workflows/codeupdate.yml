@@ -20,7 +20,7 @@ jobs:
         port: 22
         user: ${{ secrets.VM_USERNAME }}
         pass: ${{ secrets.VM_PASSWORD }}
-        script: cd /home/devops/Assessment/nodejs-webapp && git pull
+        # script: cd /home/devops/Assessment/nodejs-webapp && git pull
     # - name: Set up SSH
     #   run: |
     #     mkdir -p ~/.ssh
@@ -29,13 +29,14 @@ jobs:
     #     chmod 600 ~/.ssh/id_rsa
     #     ssh-keyscan -t rsa ${{ secrets.VM_IP_ADDRESS }} >> ~/.ssh/known_hosts
 
-    # - name: Run sshpass commands
-    #   uses: matheusvanzan/sshpass-action@v2
-    #   with:
-    #     host: ${{ secrets.VM_IP_ADDRESS }}
-    #     port: 22
-    #     user: ${{ secrets.VM_USERNAME }}
-    #     pass: ${{ secrets.VM_PASSWORD }}
+    - name: Run sshpass commands
+      uses: matheusvanzan/sshpass-action@v2
+      with:
+        host: ${{ secrets.VM_IP_ADDRESS }}
+        port: 22
+        user: ${{ secrets.VM_USERNAME }}
+        pass: ${{ secrets.VM_PASSWORD }}
+          script: cd /home/devops/Assessment/nodejs-webapp && git pull
     # - name: ssh Login and pull code
     #   run: |
     #     whoami
