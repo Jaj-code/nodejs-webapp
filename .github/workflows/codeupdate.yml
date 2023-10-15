@@ -38,5 +38,4 @@ jobs:
         pass: ${{ secrets.VM_PASSWORD }}
     - name: ssh Login and pull code
       run: |
-        sshpass -p ${{ secrets.VM_PASSWORD }} ssh ${{ secrets.VM_USERNAME }}@${{ secrets.VM_IP_ADDRESS }}
         whoami
