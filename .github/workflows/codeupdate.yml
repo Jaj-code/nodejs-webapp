@@ -16,6 +16,10 @@ jobs:
         port: 22
         user: ${{ secrets.VM_USERNAME }}
         pass: ${{ secrets.VM_PASSWORD }}
+      run: |
+        pwd
+        ls -l
+        cd /home/devops/Assessment/nodejs-webapp && git pull
 
     # - name: Create SSH directory
     #   run: |
@@ -25,8 +29,8 @@ jobs:
     #   run: |
     #     echo "$SSH_PRIVATE_KEY" > ~/.ssh/id_rsa
     #     chmod 600 ~/.ssh/id_rsa
-    - name: Pull Code
-      run: |
-        pwd
-        ls-l
-        cd /home/devops/Assessment/nodejs-webapp && git pull
+    # - name: Pull Code
+    #   run: |
+    #     pwd
+    #     ls -l
+    #     cd /home/devops/Assessment/nodejs-webapp && git pull
