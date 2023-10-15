@@ -1,7 +1,7 @@
 name: Sync Codebase
 
 on:
-  merge:
+  push:
     branches:
       - master
 
@@ -15,6 +15,5 @@ jobs:
 
       - name: Update Codebase
         run:  |
-          git checkout master
           git pull
         #pulls latest code to the local folder
