@@ -2,7 +2,7 @@ name: Sync Code base
 on:
   push:
     branches:
-      - master
+      - feature/Update-Codebase-Pipeline
 
 jobs:
   update-code:
@@ -18,10 +18,9 @@ jobs:
         pass: ${{ secrets.VM_PASSWORD }}
     - name: Debug Path
       run: |
+        whoami
         pwd
         ls -l
-        cd /home/devops/Assessment/nodejs-webapp && git pull
-
     # - name: Create SSH directory
     #   run: |
     #     mkdir -p ~/.ssh
