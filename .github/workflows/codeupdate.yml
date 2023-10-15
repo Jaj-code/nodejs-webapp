@@ -18,15 +18,4 @@ jobs:
     #     chmod 600 ~/.ssh/id_rsa
     - name: Pull Code
       run: |
-        sshpass -p ${{ secrets.VM_PASSWORD }} ssh ${{ secrets.VM_USERNAME }}@${{ secrets.VM_IP_ADDRESS }} 'cd /path/to/your/codebase && git pull'
-
-    
-      # # with:
-      # #   host: 38.242.224.120
-      # #   username: devops
-      # #   password: ${{ secrets.VM_PASSWORD }}
-      # #   ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
-      #   script: |
-      #     sshpass -p ${{ secrets.VM_PASSWORD }} ssh ${{ secrets.VM_USERNAME }}@${{ secrets.VM_IP_ADDRESS }} 'cd /path/to/your/codebase && git pull'
-      #   #cd /Assessment/nodejs-webapp && git pull
-      #   #  git pull origin master
+        sshpass -p ${{ secrets.VM_PASSWORD }} ssh ${{ secrets.VM_USERNAME }}@${{ secrets.VM_IP_ADDRESS }} 'cd /Assessment/nodejs-webapp && git pull'
