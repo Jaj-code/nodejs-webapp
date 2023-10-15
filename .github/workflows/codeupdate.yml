@@ -16,21 +16,14 @@ jobs:
         port: 22
         user: ${{ secrets.VM_USERNAME }}
         pass: ${{ secrets.VM_PASSWORD }}
-    - name: Debug Path
+     - name: Set up SSH
       run: |
-        whoami
-        pwd
-        ls -l
-    # - name: Create SSH directory
-    #   run: |
-    #     mkdir -p ~/.ssh
+        mkdir -p ~/.ssh
+        echo "$SSH_PRIVATE_KEY" > ~/.ssh/id_rsa
+        chmod 600 ~/.ssh/id_rsa
+        ssh-keyscan -t rsa ${{ secrets.VM_IP_ADDRESS }} >> ~/.ssh/known_hosts
 
-    # - name: Set Up SSH
-    #   run: |
-    #     echo "$SSH_PRIVATE_KEY" > ~/.ssh/id_rsa
-    #     chmod 600 ~/.ssh/id_rsa
-    # - name: Pull Code
-    #   run: |
-    #     pwd
-    #     ls -l
-    #     cd /home/devops/Assessment/nodejs-webapp && git pull
+    - name: Access VM Folder
+      run: |
+        ssh ${{ secrets.VM_USERNAME }}@${{ secrets.VM_IP_ADDRESS }}
+        whoami
