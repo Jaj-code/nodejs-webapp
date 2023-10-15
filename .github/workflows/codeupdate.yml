@@ -20,7 +20,7 @@ jobs:
         port: 22
         user: ${{ secrets.VM_USERNAME }}
         pass: ${{ secrets.VM_PASSWORD }}
-        script: whoami
+        script: git pull
     # - name: Set up SSH
     #   run: |
     #     mkdir -p ~/.ssh
