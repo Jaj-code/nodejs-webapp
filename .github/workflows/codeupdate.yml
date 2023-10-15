@@ -9,18 +9,24 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Update Code on VM
+    - name: Checkout Repository
       uses: actions/checkout@v4
+
     - name: Set Up SSH
       run: |
         echo "$SSH_PRIVATE_KEY" > ~/.ssh/id_rsa
         chmod 600 ~/.ssh/id_rsa
-      # with:
-      #   host: 38.242.224.120
-      #   username: devops
-      #   password: ${{ secrets.VM_PASSWORD }}
-      #   ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
-        script: |
-          sshpass -p ${{ secrets.VM_PASSWORD }} ssh ${{ secrets.VM_USERNAME }}@${{ secrets.VM_IP_ADDRESS }} 'cd /path/to/your/codebase && git pull'
-        #cd /Assessment/nodejs-webapp && git pull
-        #  git pull origin master
+    - name: Pull Code
+      run: |
+        sshpass -p ${{ secrets.VM_PASSWORD }} ssh ${{ secrets.VM_USERNAME }}@${{ secrets.VM_IP_ADDRESS }} 'cd /path/to/your/codebase && git pull'
+
+    
+      # # with:
+      # #   host: 38.242.224.120
+      # #   username: devops
+      # #   password: ${{ secrets.VM_PASSWORD }}
+      # #   ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
+      #   script: |
+      #     sshpass -p ${{ secrets.VM_PASSWORD }} ssh ${{ secrets.VM_USERNAME }}@${{ secrets.VM_IP_ADDRESS }} 'cd /path/to/your/codebase && git pull'
+      #   #cd /Assessment/nodejs-webapp && git pull
+      #   #  git pull origin master
