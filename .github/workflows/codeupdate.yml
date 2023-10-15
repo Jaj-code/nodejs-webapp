@@ -11,10 +11,9 @@ jobs:
 
     steps:
       - name: Checkout Repository
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
 
       - name: Update Codebase
         run:  |
-          git checkout master
           git pull
         #pulls latest code to the local folder
