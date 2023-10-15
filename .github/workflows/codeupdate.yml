@@ -12,6 +12,9 @@ jobs:
     - name: Checkout Repository
       uses: actions/checkout@v4
 
+    - name: Create SSH directory
+     run: mkdir -p ~/.ssh
+
     - name: Set Up SSH
       run: |
         echo "$SSH_PRIVATE_KEY" > ~/.ssh/id_rsa
