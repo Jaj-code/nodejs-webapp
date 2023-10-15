@@ -15,27 +15,27 @@ jobs:
         git config --global user.name "Jajitha"
     - name: Checkout Repository
       uses: actions/checkout@v4
-      # with:
-      #   host: ${{ secrets.VM_IP_ADDRESS }}
-      #   port: 22
-      #   user: ${{ secrets.VM_USERNAME }}
-      #   pass: ${{ secrets.VM_PASSWORD }}
+      with:
+        host: ${{ secrets.VM_IP_ADDRESS }}
+        port: 22
+        user: ${{ secrets.VM_USERNAME }}
+        pass: ${{ secrets.VM_PASSWORD }}
+        script: whoami
     # - name: Set up SSH
     #   run: |
     #     mkdir -p ~/.ssh
     #     echo "$SSH_PRIVATE_KEY" > ~/.ssh/id_rsa
     #     echo "$SSH_PUBLIC_KEY" > ~/.ssh/id_rsa.pub
     #     chmod 600 ~/.ssh/id_rsa
-    #     ssh-copy-id -i ~/.ssh/id_rsa.pub ${{ secrets.VM_USERNAME }}@${{ secrets.VM_IP_ADDRESS }}
     #     ssh-keyscan -t rsa ${{ secrets.VM_IP_ADDRESS }} >> ~/.ssh/known_hosts
 
-    - name: Run sshpass commands
-      uses: matheusvanzan/sshpass-action@v2
-      with:
-        host: ${{ secrets.VM_IP_ADDRESS }}
-        port: 22
-        user: ${{ secrets.VM_USERNAME }}
-        pass: ${{ secrets.VM_PASSWORD }}
-    - name: ssh Login and pull code
-      run: |
-        whoami
+    # - name: Run sshpass commands
+    #   uses: matheusvanzan/sshpass-action@v2
+    #   with:
+    #     host: ${{ secrets.VM_IP_ADDRESS }}
+    #     port: 22
+    #     user: ${{ secrets.VM_USERNAME }}
+    #     pass: ${{ secrets.VM_PASSWORD }}
+    # - name: ssh Login and pull code
+    #   run: |
+    #     whoami
