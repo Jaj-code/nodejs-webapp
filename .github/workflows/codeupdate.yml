@@ -15,5 +15,6 @@ jobs:
 
       - name: Update Codebase
         run:  |
+          git checkout master
           git pull
         #pulls latest code to the local folder
