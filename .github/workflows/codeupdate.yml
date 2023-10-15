@@ -9,6 +9,10 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+    - name: Set up Git
+      run: |
+        git config --global user.email "jajitha.k@gmail.com"
+        git config --global user.name "Jajitha"
     - name: Checkout Repository
       uses: actions/checkout@v4
       with:
@@ -25,4 +29,5 @@ jobs:
 
     - name: Access VM Folder
       run: |
+        ssh ${{ secrets.VM_USERNAME }}@${{ secrets.VM_IP_ADDRESS }}
         whoami
