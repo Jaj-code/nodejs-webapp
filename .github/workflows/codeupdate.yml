@@ -25,5 +25,4 @@ jobs:
 
     - name: Access VM Folder
       run: |
-        ssh ${{ secrets.VM_USERNAME }}@${{ secrets.VM_IP_ADDRESS }}
         whoami
