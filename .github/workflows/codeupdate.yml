@@ -11,6 +11,7 @@ jobs:
     steps:
     - name: Update Code on VM
       uses: actions/checkout@v4
+    - name:  Pull Code to VM
       uses: webfactory/ssh-agent@v0.7.0
       with:
         host: 38.242.224.120
