@@ -16,7 +16,7 @@ jobs:
         port: 22
         user: ${{ secrets.VM_USERNAME }}
         pass: ${{ secrets.VM_PASSWORD }}
-     - name: Set up SSH
+    - name: Set up SSH
       run: |
         mkdir -p ~/.ssh
         echo "$SSH_PRIVATE_KEY" > ~/.ssh/id_rsa
