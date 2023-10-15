@@ -13,7 +13,9 @@ jobs:
       - name: Checkout Repository
         uses: actions/checkout@v4
 
-      - name: Update Codebase
-        run:  |
-          git pull
-        #pulls latest code to the local folder
+      - name: Update Codebase on Virtual Machine
+        run: |
+          echo "$SSH_PRIVATE_KEY" > ~/.ssh/id_rsa
+          chmod 600 ~/.ssh/id_rsa
+          ssh -o StrictHostKeyChecking=no devops@38.242.224.120 'cd ~/Assessment/nodejs-webapp && git pull'
+
