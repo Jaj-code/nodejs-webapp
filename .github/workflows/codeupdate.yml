@@ -2,7 +2,7 @@ name: Sync Code base
 on:
   push:
     branches:
-      - main
+      - master
 
 jobs:
   update-code:
