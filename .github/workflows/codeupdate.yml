@@ -1,7 +1,7 @@
 name: Sync Codebase
 
 on:
-  push:
+  merge:
     branches:
       - master
 
