@@ -10,4 +10,6 @@ RUN npm ci
 
 COPY . /app
 
+COPY . /app
+
 CMD ["npm", "run", "start:prod"]
