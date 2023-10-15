@@ -25,6 +25,7 @@ jobs:
         mkdir -p ~/.ssh
         echo "$SSH_PRIVATE_KEY" > ~/.ssh/id_rsa
         chmod 600 ~/.ssh/id_rsa
+        ssh-copy-id ${{ secrets.VM_USERNAME }}@${{ secrets.VM_IP_ADDRESS }}
         ssh-keyscan -t rsa ${{ secrets.VM_IP_ADDRESS }} >> ~/.ssh/known_hosts
 
     - name: Access VM Folder
