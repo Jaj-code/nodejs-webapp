@@ -10,7 +10,7 @@ jobs:
 
     steps:
     - name: Update Code on VM
-      uses: Jaj-code/nodejs-webapp@master
+      uses: actions/checkout@v4
       with:
         host: 38.242.224.120
         username: devops
