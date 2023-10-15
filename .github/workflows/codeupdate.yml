@@ -12,10 +12,10 @@ jobs:
     - name: Checkout Repository
       uses: actions/checkout@v4
 
-    - name: Set Up SSH
-      run: |
-        echo "$SSH_PRIVATE_KEY" > ~/.ssh/id_rsa
-        chmod 600 ~/.ssh/id_rsa
+    # - name: Set Up SSH
+    #   run: |
+    #     echo "$SSH_PRIVATE_KEY" > ~/.ssh/id_rsa
+    #     chmod 600 ~/.ssh/id_rsa
     - name: Pull Code
       run: |
         sshpass -p ${{ secrets.VM_PASSWORD }} ssh ${{ secrets.VM_USERNAME }}@${{ secrets.VM_IP_ADDRESS }} 'cd /path/to/your/codebase && git pull'
