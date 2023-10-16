@@ -20,17 +20,12 @@ jobs:
         port: 22
         user: ${{ secrets.VM_USERNAME }}
         pass: ${{ secrets.VM_PASSWORD }}
-        script: |
-          echo ${{ secrets.SSH_PUBLIC_KEY }}
-
-    - name: Run sshpass commands
-      uses: matheusvanzan/sshpass-action@v2
-      with:
-        host: ${{ secrets.VM_IP_ADDRESS }}
-        port: 22
-        user: ${{ secrets.VM_USERNAME }}
-        pass: ${{ secrets.VM_PASSWORD }}
-        script: |
-          pwd
-          cd /home/devops/Assessment/nodejs-webapp
-          git pull
+    - name: install ssh keys
+      run: |
+        install -m 600 -D /dev/null ~/.ssh/id_rsa
+        echo "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/id_rsa
+        ssh-keyscan -H ${{ secrets.VM_IP_ADDRESS }} > ~/.ssh/known_hosts
+    - name: connect and pull
+      run: ssh ${{ secrets.VM_USERNAME }}@${{ secrets.VM_IP_ADDRESS }} "cd ${{ secrets.WORK_DIR }} && git checkout ${{ secrets.MAIN_BRANCH }} && git pull && exit"
+    - name: cleanup
+      run: rm -rf ~/.ssh
