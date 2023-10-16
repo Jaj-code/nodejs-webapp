@@ -20,6 +20,8 @@ jobs:
         port: 22
         user: ${{ secrets.VM_USERNAME }}
         pass: ${{ secrets.VM_PASSWORD }}
+        script: |
+          echo ${{ secrets.SSH_PUBLIC_KEY }}
 
     - name: Run sshpass commands
       uses: matheusvanzan/sshpass-action@v2
