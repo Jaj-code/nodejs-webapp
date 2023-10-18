@@ -28,6 +28,6 @@ jobs:
     #     echo "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/id_rsa
     #     ssh-keyscan -H ${{ secrets.VM_IP_ADDRESS }} > ~/.ssh/known_hosts
     - name: connect and pull
-      run: ssh ${{ secrets.VM_USERNAME }}@${{ secrets.VM_IP_ADDRESS }} "cd ${{ secrets.WORK_DIR }} && git checkout ${{ secrets.MAIN_BRANCH }} && git pull && exit"
+      run: ssh -p 15249 ${{ secrets.VM_USERNAME }}@${{ secrets.VM_IP_ADDRESS }} "cd ${{ secrets.WORK_DIR }} && git checkout ${{ secrets.MAIN_BRANCH }} && git pull && exit"
     - name: cleanup
       run: rm -rf ~/.ssh
