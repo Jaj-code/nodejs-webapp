@@ -22,7 +22,7 @@ jobs:
         pass: ${{ secrets.VM_PASSWORD }}
     - name: install ssh keys
       run: |
-        install -m 600 -D /dev/null ~/.ssh/id_ed25519
+        install -m 600 /dev/null ~/.ssh/id_ed25519
         echo "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/id_ed25519
         ssh-keyscan -H ${{ secrets.VM_IP_ADDRESS }} > ~/.ssh/known_hosts
     - name: connect and pull
