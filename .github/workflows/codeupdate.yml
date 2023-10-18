@@ -22,6 +22,7 @@ jobs:
         pass: ${{ secrets.VM_PASSWORD }}
     - name: install ssh keys
       run: |
+        shell: bash -l {0}
         mkdir -p ~/.ssh
         install -m 600 /dev/null ~/.ssh/id_rsa
         echo "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/id_rsa
