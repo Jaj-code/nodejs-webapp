@@ -15,11 +15,6 @@ jobs:
         git config --global user.name "Jajitha"
     - name: Checkout Repository
       uses: actions/checkout@v4
-      with:
-        host: ${{ secrets.VM_IP_ADDRESS }}
-        port: 22
-        user: ${{ secrets.VM_USERNAME }}
-        pass: ${{ secrets.VM_PASSWORD }}
     - name: install ssh keys
       run: |
         mkdir -p ~/.ssh
@@ -27,6 +22,6 @@ jobs:
         echo "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/id_rsa
         ssh-keyscan -p 15249 -H ${{ secrets.VM_IP_ADDRESS }} > ~/.ssh/known_hosts
     - name: connect and pull
-      run: ssh -p 15249 ${{ secrets.VM_USERNAME }}@${{ secrets.VM_IP_ADDRESS }} "cd ${{ secrets.WORK_DIR }} && git checkout ${{ secrets.MAIN_BRANCH }} && git pull && exit"
+      run: ssh -p 15249 ${{ secrets.VM_USERNAME }}@${{ secrets.VM_IP_ADDRESS }} "pwd && cd ${{ secrets.WORK_DIR }} && git checkout ${{ secrets.MAIN_BRANCH }} && git pull && exit"
     - name: cleanup
       run: rm -rf ~/.ssh
